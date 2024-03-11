@@ -7,9 +7,14 @@ const template = document.querySelector("#todo-template");
 
 function updateTodoList() {
   todoList.innerHTML = "";
-  todos.forEach((todo) => {
+  todos.forEach((todo, index) => {
     const newTodo = template.content.cloneNode(true);
     newTodo.querySelector("span").textContent = todo;
+    newTodo.querySelector(".cross").addEventListener("click", function () {
+      todos.splice(index, 1);
+      localStorage.setItem("todos", JSON.stringify(todos));
+      updateTodoList();
+    });
     todoList.appendChild(newTodo);
   });
 }
@@ -22,10 +27,14 @@ document
     event.preventDefault();
     todos.push(input.value);
     localStorage.setItem("todos", JSON.stringify(todos));
-    const newTodo = template.content.cloneNode(true);
-    newTodo.querySelector("span").textContent = input.value;
-    todoList.appendChild(newTodo);
+    updateTodoList();
     input.value = "";
   });
+
+
+
+
+  
+
 
 // localStorage.clear();
