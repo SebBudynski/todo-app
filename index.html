@@ -16,20 +16,29 @@
   <body>
     <main>
       <h1>Todo</h1>
-      <template>
+      <form id="todo-form">
         <div class="item">
           <input type="checkbox" class="item-completed" />
           <input
             type="text"
+            id="todo-input"
+            name="todo"
             class="item-description"
             placeholder="Create a new todo.."
           />
         </div>
-      </template>
-
+      </form>
+      <ul id="todo-list"></ul>
       <!-- Add dynamic number -->
       items left All Active Completed Clear Completed
       <p>Drag and drop to reorder list</p>
+      <template id="todo-template">
+        <li>
+          <input type="checkbox" />
+          <span class="todo-text"></span>
+          <img src="images/icon-cross.svg" alt="icon of a cross to dalete todo" class="cross">
+        </li>
+      </template>
     </main>
 
     <footer>

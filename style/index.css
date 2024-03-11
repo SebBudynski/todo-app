@@ -31,8 +31,8 @@ main {
 .item {
   margin-bottom: 3rem; }
 
-.item-completed:checked + .item-description {
-  text-decoration: line-through; }
+.cross {
+  margin-left: 3rem; }
 
 .attribution {
   font-size: 11px;
