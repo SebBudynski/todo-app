@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
     <link
       rel="icon"
       type="image/png"
@@ -15,29 +14,40 @@
   </head>
   <body>
     <main>
-      <h1>Todo</h1>
-      <form id="todo-form">
-        <div class="item">
-          <input type="checkbox" class="item-completed" />
-          <input
-            type="text"
-            id="todo-input"
-            name="todo"
-            class="item-description"
-            placeholder="Create a new todo.."
-          />
-        </div>
-      </form>
-      <ul id="todo-list"></ul>
-      <!-- Add dynamic number -->
-      items left All Active Completed Clear Completed
-      <p>Drag and drop to reorder list</p>
-      
+      <div class="content">
+        <h1>TODO</h1>
+        <form id="todo-form">
+          <div class="item">
+            <input type="checkbox" class="checkbox" />
+            <input
+              type="text"
+              id="todo-input"
+              name="todo"
+              class="item-description"
+              placeholder="Create a new todo.."
+            />
+            <img
+              src="images/icon-cross.svg"
+              alt="icon of a cross to dalete todo"
+              class="cross"
+            />
+          </div>
+        </form>
+        <ul id="todo-list"></ul>
+        <!-- Add dynamic number -->
+        items left All Active Completed Clear Completed
+        <p>Drag and drop to reorder list</p>
+      </div>
+
       <template id="todo-template">
         <li>
-          <input type="checkbox" />
+          <input type="checkbox" class="checkbox" />
           <span class="todo-text"></span>
-          <img src="images/icon-cross.svg" alt="icon of a cross to dalete todo" class="cross">
+          <img
+            src="images/icon-cross.svg"
+            alt="icon of a cross to dalete todo"
+            class="cross"
+          />
         </li>
       </template>
     </main>

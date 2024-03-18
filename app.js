@@ -31,10 +31,6 @@ document
     input.value = "";
   });
 
-
-
-
-  
-
-
 // localStorage.clear();
+
+

@@ -2,16 +2,16 @@
 :root {
   --very-light-gray: hsl(0, 0%, 98%);
   --very-light-grayish-blue: hsl(236, 33%, 92%);
-  --light-grayish-blue: hsl(233, 11%, 84%);
-  --dark-grayish-blue: hsl(236, 9%, 61%);
-  --very-dark-grayish-blue: hsl(235, 19%, 35%);
+  --light-grayish-blue-light-theme: hsl(233, 11%, 84%);
+  --dark-grayish-blue-light-theme: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue-light-theme: hsl(235, 19%, 35%);
   --very-dark-blue: hsl(235, 21%, 11%);
   --very-dark-desaturated-blue: hsl(235, 24%, 19%);
   --light-grayish-blue: hsl(234, 39%, 85%);
   --light-grayish-blue-hover: hsl(236, 33%, 92%);
   --dark-grayish-blue: hsl(234, 11%, 52%);
   --very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --very-dark-grayish-blue: hsl(237, 14%, 26%); }
+  --very-very-dark-grayish-blue: hsl(237, 14%, 26%); }
 
 * {
   margin: 0;
@@ -21,6 +21,14 @@
 html {
   font-size: 18px; }
 
+body {
+  background-image: url(/images/bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: var(--very-dark-blue);
+  color: var(--very-light-grayish-blue);
+  font-family: josefin sans, sans-serif; }
+
 main {
   min-height: calc(100vh - 50px);
   display: flex;
@@ -28,11 +36,48 @@ main {
   justify-content: center;
   flex-direction: column; }
 
+h1 {
+  color: var(--very-light-gray);
+  letter-spacing: 0.5rem;
+  margin-bottom: 1.5rem; }
+
+.item {
+  width: 22rem;
+  height: 2rem;
+  background-color: var(--very-very-dark-grayish-blue);
+  color: var(--light-grayish-blue);
+  display: flex; }
+
+#todo-input,
+.todo-text {
+  background-color: inherit;
+  color: inherit;
+  width: 100%;
+  border: none;
+  margin-left: 1rem; }
+
+#todo-input::placeholder {
+  color: var(--light-grayish-blue); }
+
+#todo-list {
+  width: 22rem;
+  background-color: var(--very-very-dark-grayish-blue); }
+
+ul {
+  list-style-type: none; }
+
+li {
+  height: 2rem;
+  border-bottom: 1px solid var(--dark-grayish-blue); }
+
 .item {
   margin-bottom: 3rem; }
 
+.checkbox {
+  margin-left: 1rem; }
+
 .cross {
-  margin-left: 3rem; }
+  margin-left: auto; }
 
 .attribution {
   font-size: 11px;
