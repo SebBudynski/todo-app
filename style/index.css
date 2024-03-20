@@ -42,7 +42,7 @@ h1 {
   margin-bottom: 1.5rem; }
 
 .item {
-  width: 22rem;
+  width: 25rem;
   height: 2rem;
   background-color: var(--very-very-dark-grayish-blue);
   color: var(--light-grayish-blue);
@@ -60,21 +60,27 @@ h1 {
   color: var(--light-grayish-blue); }
 
 #todo-list {
-  width: 22rem;
+  width: 25rem;
   background-color: var(--very-very-dark-grayish-blue); }
 
 ul {
   list-style-type: none; }
 
 li {
-  height: 2rem;
-  border-bottom: 1px solid var(--dark-grayish-blue); }
+  border-bottom: 1px solid var(--dark-grayish-blue);
+  display: flex;
+  align-items: center;
+  padding: 1rem; }
 
 .item {
   margin-bottom: 3rem; }
 
 .checkbox {
-  margin-left: 1rem; }
+  margin-left: 1rem;
+  border-radius: 50%; }
+
+.checkbox:checked + .todo-text {
+  text-decoration: line-through; }
 
 .cross {
   margin-left: auto; }

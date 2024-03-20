@@ -35,7 +35,7 @@ h1 {
 }
 
 .item {
-  width: 22rem;
+  width: 25rem;
   height: 2rem;
   background-color: var(--very-very-dark-grayish-blue);
   color: var(--light-grayish-blue);
@@ -49,7 +49,6 @@ h1 {
   width: 100%;
   border: none;
   margin-left: 1rem;
-  // display: block;
 }
 
 #todo-input::placeholder {
@@ -57,7 +56,7 @@ h1 {
 }
 
 #todo-list {
-  width: 22rem;
+  width: 25rem;
   background-color: var(--very-very-dark-grayish-blue);
 }
 
@@ -66,8 +65,10 @@ ul {
 }
 
 li {
-  height: 2rem;
   border-bottom: 1px solid var(--dark-grayish-blue);
+  display: flex;
+  align-items: center;
+  padding: 1rem;
 }
 
 .item {
@@ -76,11 +77,12 @@ li {
 
 .checkbox {
   margin-left: 1rem;
+  border-radius: 50%;
 }
 
-// .item-completed:checked + .item-description {
-//   text-decoration: line-through;
-// }
+.checkbox:checked + .todo-text {
+  text-decoration: line-through;
+}
 
 .cross {
   margin-left: auto;
