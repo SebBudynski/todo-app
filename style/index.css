@@ -76,8 +76,44 @@ li {
   margin-bottom: 3rem; }
 
 .checkbox {
-  margin-left: 1rem;
-  border-radius: 50%; }
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid black;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  position: relative; }
+
+.checkbox::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right bottom, lightsteelblue, steelblue);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out; }
+
+.checkbox::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: url(/images/icon-check.svg) no-repeat center center;
+  background-size: contain;
+  background-color: linear-gradient(to right bottom, lightsteelblue, steelblue);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.checkbox:checked::before,
+.checkbox:checked::after {
+  opacity: 1; }
 
 .checkbox:checked + .todo-text {
   text-decoration: line-through; }
