@@ -19,7 +19,8 @@
         <h1>TODO</h1>
         <form id="todo-form">
           <div class="item">
-            <input type="checkbox" class="checkbox" />
+            <!-- <input type="checkbox" class="checkbox" /> -->
+            <div class="status"></div>
             <input
               type="text"
               id="todo-input"
@@ -42,13 +43,13 @@
 
       <template id="todo-template">
         <li>
-            <input type="checkbox" class="checkbox" />
-            <span class="todo-text"></span>
-            <img
-              src="images/icon-cross.svg"
-              alt="icon of a cross to dalete todo"
-              class="cross"
-            />
+          <div class="status"></div>
+          <span class="todo-text"></span>
+          <img
+            src="images/icon-cross.svg"
+            alt="icon of a cross to dalete todo"
+            class="cross"
+          />
         </li>
       </template>
     </main>
