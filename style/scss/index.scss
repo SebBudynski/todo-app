@@ -12,10 +12,8 @@ html {
 }
 
 body {
-  background-image: url(/images/bg-desktop-dark.jpg);
-  background-repeat: no-repeat;
-  background-position: top;
-  background-color: var(--very-dark-blue);
+  background: url(/images/bg-desktop-dark.jpg) top no-repeat
+    var(--very-dark-blue);
   color: var(--very-light-grayish-blue);
   font-family: josefin sans, sans-serif;
 }
@@ -40,6 +38,7 @@ h1 {
   background-color: var(--very-very-dark-grayish-blue);
   color: var(--light-grayish-blue);
   display: flex;
+  border-radius: 5px;
 }
 
 #todo-input,
@@ -58,6 +57,7 @@ h1 {
 #todo-list {
   width: 25rem;
   background-color: var(--very-very-dark-grayish-blue);
+  border-radius: 5px;
 }
 
 ul {
@@ -102,6 +102,38 @@ li {
 
 .cross {
   margin-left: auto;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: url(/images/icon-sun.svg) no-repeat center;
+  margin-left: auto;
+  margin-top: -0.5rem;
+  cursor: pointer;
+}
+
+.switch.bright-mode {
+  background: url(/images/icon-moon.svg) no-repeat center;
+}
+
+body.bright-mode {
+  background: url(/images/bg-desktop-light.jpg) top no-repeat
+    var(--very-light-gray);
+}
+
+#todo-list.bright-mode,
+.item.bright-mode {
+  background-color: var(--very-light-gray);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  color: var(--dark-grayish-blue);
 }
 
 .attribution {
