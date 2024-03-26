@@ -22,7 +22,6 @@
         </div>
         <form id="todo-form">
           <div class="item">
-            <!-- <input type="checkbox" class="checkbox" /> -->
             <div class="status"></div>
             <input
               type="text"
@@ -38,9 +37,14 @@
             />
           </div>
         </form>
-        <ul id="todo-list"></ul>
-        <!-- Add dynamic number -->
-        items left All Active Completed Clear Completed
+        <ul class="todo-list"></ul>
+        <ul class="bottom-bar">
+          <li class="items-left">items left</li>
+          <li class="all-filter">All</li>
+          <li class="active-filter">Active</li>
+          <li class="compleated-filter">Completed</li>
+          <li class="clear-completed">Clear Completed</li>
+        </ul>
         <p>Drag and drop to reorder list</p>
       </div>
 

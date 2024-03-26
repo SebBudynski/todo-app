@@ -1,7 +1,7 @@
 "use strict";
 
 const input = document.querySelector("#todo-input");
-const todoList = document.querySelector("#todo-list");
+const todoList = document.querySelector(".todo-list");
 const template = document.querySelector("#todo-template");
 const todoForm = document.querySelector("#todo-form");
 const switchBtn = document.querySelector(".switch");
@@ -50,7 +50,7 @@ todoForm.addEventListener("submit", function (event) {
 function brightMode() {
   switchBtn.classList.toggle("bright-mode");
   document.querySelector("body").classList.toggle("bright-mode");
-  document.querySelector("#todo-list").classList.toggle("bright-mode");
+  document.querySelector(".todo-list").classList.toggle("bright-mode");
   document.querySelector(".item").classList.toggle("bright-mode");
   let isBrightMode = document.body.classList.contains("bright-mode");
   localStorage.setItem("bright-mode", isBrightMode);

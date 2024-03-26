@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import "_reset.scss";
 @import "_variables.scss";
+@import "_bright-mode.scss";
+@import "_footer.scss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 html {
   font-size: 18px;
@@ -13,7 +12,7 @@ html {
 
 body {
   background: url(/images/bg-desktop-dark.jpg) top no-repeat
-    var(--very-dark-blue);
+  var(--very-dark-blue);
   color: var(--very-light-grayish-blue);
   font-family: josefin sans, sans-serif;
 }
@@ -22,26 +21,33 @@ main {
   min-height: calc(100vh - 50px);
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
 }
 
 h1 {
   color: var(--very-light-gray);
   letter-spacing: 0.5rem;
-  margin: 1.5rem 0;
+  margin: 3rem 0;
 }
 
 .item {
   width: 25rem;
-  height: 2rem;
+  height: 3rem;
   background-color: var(--very-very-dark-grayish-blue);
   color: var(--light-grayish-blue);
   display: flex;
   border-radius: 5px;
+  margin-bottom: 1rem;
+  align-items: center;
+  padding: 1rem;
 }
 
-#todo-input,
+.item-description,
 .todo-text {
   background-color: inherit;
   color: inherit;
@@ -50,18 +56,18 @@ h1 {
   margin-left: 1rem;
 }
 
-#todo-input::placeholder {
+.todo-text {
+  margin-top: 0.25rem;
+}
+
+.item-description::placeholder {
   color: var(--light-grayish-blue);
 }
 
-#todo-list {
+.todo-list {
   width: 25rem;
   background-color: var(--very-very-dark-grayish-blue);
   border-radius: 5px;
-}
-
-ul {
-  list-style-type: none;
 }
 
 li {
@@ -70,12 +76,6 @@ li {
   align-items: center;
   padding: 1rem;
   cursor: pointer;
-}
-
-.item {
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
 }
 
 .status {
@@ -96,17 +96,31 @@ li {
     linear-gradient(to right bottom, lightsteelblue, steelblue);
 }
 
-.line-through {
+.todo-text.line-through {
   text-decoration: line-through;
+  color: var(--dark-grayish-blue-light-theme);
 }
 
 .cross {
   margin-left: auto;
 }
 
-.top-bar {
+
+.bottom-bar {
+  height: 2rem;
+  width: 25rem;
+  background-color: var(--very-very-dark-grayish-blue);
+  font-size: 0.75rem;
+  text-align: center;
   display: flex;
-  align-items: center;
+  text-wrap: nowrap;
+}
+
+p {
+  margin-top: 3rem;
+  width: 25rem;
+  font-size: 0.75rem;
+  color: var(--dark-grayish-blue-light-theme);
 }
 
 .switch {
@@ -118,29 +132,4 @@ li {
   margin-left: auto;
   margin-top: -0.5rem;
   cursor: pointer;
-}
-
-.switch.bright-mode {
-  background: url(/images/icon-moon.svg) no-repeat center;
-}
-
-body.bright-mode {
-  background: url(/images/bg-desktop-light.jpg) top no-repeat
-    var(--very-light-gray);
-}
-
-#todo-list.bright-mode,
-.item.bright-mode {
-  background-color: var(--very-light-gray);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
-  color: var(--dark-grayish-blue);
-}
-
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
 }
