@@ -1,0 +1,33 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  color: var(--very-light-gray);
+  letter-spacing: 0.5rem;
+  margin: 3rem 0;
+}
+
+.item {
+  width: 25rem;
+  height: 3rem;
+  background-color: var(--very-very-dark-grayish-blue);
+  color: var(--light-grayish-blue);
+  display: flex;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+.switch-mode {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: url(/images/icon-sun.svg) no-repeat center;
+  margin-left: auto;
+  margin-top: -0.5rem;
+  cursor: pointer;
+}

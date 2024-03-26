@@ -1,0 +1,57 @@
+.item-description,
+.todo-text {
+  background-color: inherit;
+  color: inherit;
+  width: 100%;
+  border: none;
+  margin-left: 1rem;
+}
+
+.todo-text {
+  margin-top: 0.25rem;
+}
+
+.item-description::placeholder {
+  color: var(--light-grayish-blue);
+}
+
+.todo-list {
+  width: 25rem;
+  background-color: var(--very-very-dark-grayish-blue);
+  border-radius: 5px;
+}
+
+li {
+  border-bottom: 1px solid var(--dark-grayish-blue);
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.status {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  border: solid 1px var(--very-dark-grayish-blue);
+  margin-left: 0.5rem;
+  background: white;
+}
+
+.status:hover {
+  border: solid 1px var(--dark-grayish-blue);
+}
+
+.check {
+  background: url(/images/icon-check.svg) no-repeat center,
+    linear-gradient(to right bottom, lightsteelblue, steelblue);
+}
+
+.todo-text.line-through {
+  text-decoration: line-through;
+  color: var(--dark-grayish-blue-light-theme);
+}
+
+.cross {
+  margin-left: auto;
+}

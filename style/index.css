@@ -21,25 +21,6 @@ ul {
   --very-dark-grayish-blue: hsl(233, 14%, 35%);
   --very-very-dark-grayish-blue: hsl(237, 14%, 26%); }
 
-.switch.bright-mode {
-  background: url(/images/icon-moon.svg) no-repeat center; }
-
-body.bright-mode {
-  background: url(/images/bg-desktop-light.jpg) top no-repeat var(--very-light-gray); }
-
-.todo-list.bright-mode,
-.item.bright-mode {
-  background-color: var(--very-light-gray);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
-  color: var(--dark-grayish-blue); }
-
-.attribution {
-  font-size: 11px;
-  text-align: center; }
-
-.attribution a {
-  color: #3e52a3; }
-
 html {
   font-size: 18px; }
 
@@ -73,6 +54,16 @@ h1 {
   margin-bottom: 1rem;
   align-items: center;
   padding: 1rem; }
+
+.switch-mode {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: url(/images/icon-sun.svg) no-repeat center;
+  margin-left: auto;
+  margin-top: -0.5rem;
+  cursor: pointer; }
 
 .item-description,
 .todo-text {
@@ -121,6 +112,18 @@ li {
 .cross {
   margin-left: auto; }
 
+.switch-mode.bright-mode {
+  background: url(/images/icon-moon.svg) no-repeat center; }
+
+body.bright-mode {
+  background: url(/images/bg-desktop-light.jpg) top no-repeat var(--very-light-gray); }
+
+.todo-list.bright-mode,
+.item.bright-mode {
+  background-color: var(--very-light-gray);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  color: var(--dark-grayish-blue); }
+
 .bottom-bar {
   height: 2rem;
   width: 25rem;
@@ -136,12 +139,9 @@ p {
   font-size: 0.75rem;
   color: var(--dark-grayish-blue-light-theme); }
 
-.switch {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  background: url(/images/icon-sun.svg) no-repeat center;
-  margin-left: auto;
-  margin-top: -0.5rem;
-  cursor: pointer; }
+.attribution {
+  font-size: 11px;
+  text-align: center; }
+
+.attribution a {
+  color: #3e52a3; }

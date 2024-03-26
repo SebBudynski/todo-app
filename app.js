@@ -4,7 +4,7 @@ const input = document.querySelector("#todo-input");
 const todoList = document.querySelector(".todo-list");
 const template = document.querySelector("#todo-template");
 const todoForm = document.querySelector("#todo-form");
-const switchBtn = document.querySelector(".switch");
+const switchBtn = document.querySelector(".switch-mode");
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 function updateTodoList() {
