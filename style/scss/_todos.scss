@@ -11,14 +11,11 @@
   margin-top: 0.25rem;
 }
 
-.item-description::placeholder {
-  color: var(--light-grayish-blue);
-}
-
-.todo-list {
-  width: 25rem;
+.todo-container {
+  width: 30rem;
   background-color: var(--very-very-dark-grayish-blue);
   border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 }
 
 li {
@@ -35,7 +32,6 @@ li {
   border-radius: 50%;
   border: solid 1px var(--very-dark-grayish-blue);
   margin-left: 0.5rem;
-  background: white;
 }
 
 .status:hover {
@@ -54,4 +50,12 @@ li {
 
 .cross {
   margin-left: auto;
+}
+
+.bottom-bar {
+  height: 2rem;
+  font-size: 0.75rem;
+  text-align: center;
+  display: flex;
+  text-wrap: nowrap;
 }

@@ -10,6 +10,11 @@ body.bright-mode {
 .todo-list.bright-mode,
 .item.bright-mode {
   background-color: var(--very-light-gray);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
   color: var(--dark-grayish-blue);
 }
+
+.bottom-bar.bright-mode {
+  background-color: var(--very-light-gray);
+}
+
+

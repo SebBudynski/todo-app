@@ -9,8 +9,19 @@ h1 {
   margin: 3rem 0;
 }
 
+.switch-mode {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: url(/images/icon-sun.svg) no-repeat center;
+  margin-left: auto;
+  margin-top: -0.5rem;
+  cursor: pointer;
+}
+
 .item {
-  width: 25rem;
+  width: 30rem;
   height: 3rem;
   background-color: var(--very-very-dark-grayish-blue);
   color: var(--light-grayish-blue);
@@ -21,13 +32,17 @@ h1 {
   padding: 1rem;
 }
 
-.switch-mode {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  background: url(/images/icon-sun.svg) no-repeat center;
-  margin-left: auto;
-  margin-top: -0.5rem;
-  cursor: pointer;
+.item-description {
+  height: 100%;
+  font-size: 1rem;
+  font-family: josefin sans, sans-serif;
+}
+
+.item-description::placeholder {
+  font-size: 1rem;
+  color: var(--light-grayish-blue);
+}
+
+.item-description:focus {
+  outline: none;
 }

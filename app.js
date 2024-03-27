@@ -52,6 +52,7 @@ function brightMode() {
   document.querySelector("body").classList.toggle("bright-mode");
   document.querySelector(".todo-list").classList.toggle("bright-mode");
   document.querySelector(".item").classList.toggle("bright-mode");
+  document.querySelector(".bottom-bar").classList.toggle("bright-mode");
   let isBrightMode = document.body.classList.contains("bright-mode");
   localStorage.setItem("bright-mode", isBrightMode);
 }

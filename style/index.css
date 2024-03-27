@@ -44,17 +44,6 @@ h1 {
   letter-spacing: 0.5rem;
   margin: 3rem 0; }
 
-.item {
-  width: 25rem;
-  height: 3rem;
-  background-color: var(--very-very-dark-grayish-blue);
-  color: var(--light-grayish-blue);
-  display: flex;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  align-items: center;
-  padding: 1rem; }
-
 .switch-mode {
   width: 30px;
   height: 30px;
@@ -64,6 +53,29 @@ h1 {
   margin-left: auto;
   margin-top: -0.5rem;
   cursor: pointer; }
+
+.item {
+  width: 30rem;
+  height: 3rem;
+  background-color: var(--very-very-dark-grayish-blue);
+  color: var(--light-grayish-blue);
+  display: flex;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  align-items: center;
+  padding: 1rem; }
+
+.item-description {
+  height: 100%;
+  font-size: 1rem;
+  font-family: josefin sans, sans-serif; }
+
+.item-description::placeholder {
+  font-size: 1rem;
+  color: var(--light-grayish-blue); }
+
+.item-description:focus {
+  outline: none; }
 
 .item-description,
 .todo-text {
@@ -76,13 +88,11 @@ h1 {
 .todo-text {
   margin-top: 0.25rem; }
 
-.item-description::placeholder {
-  color: var(--light-grayish-blue); }
-
-.todo-list {
-  width: 25rem;
+.todo-container {
+  width: 30rem;
   background-color: var(--very-very-dark-grayish-blue);
-  border-radius: 5px; }
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2); }
 
 li {
   border-bottom: 1px solid var(--dark-grayish-blue);
@@ -96,8 +106,7 @@ li {
   height: 23px;
   border-radius: 50%;
   border: solid 1px var(--very-dark-grayish-blue);
-  margin-left: 0.5rem;
-  background: white; }
+  margin-left: 0.5rem; }
 
 .status:hover {
   border: solid 1px var(--dark-grayish-blue); }
@@ -112,6 +121,13 @@ li {
 .cross {
   margin-left: auto; }
 
+.bottom-bar {
+  height: 2rem;
+  font-size: 0.75rem;
+  text-align: center;
+  display: flex;
+  text-wrap: nowrap; }
+
 .switch-mode.bright-mode {
   background: url(/images/icon-moon.svg) no-repeat center; }
 
@@ -121,17 +137,10 @@ body.bright-mode {
 .todo-list.bright-mode,
 .item.bright-mode {
   background-color: var(--very-light-gray);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
   color: var(--dark-grayish-blue); }
 
-.bottom-bar {
-  height: 2rem;
-  width: 25rem;
-  background-color: var(--very-very-dark-grayish-blue);
-  font-size: 0.75rem;
-  text-align: center;
-  display: flex;
-  text-wrap: nowrap; }
+.bottom-bar.bright-mode {
+  background-color: var(--very-light-gray); }
 
 p {
   margin-top: 3rem;
