@@ -15,6 +15,16 @@ function undoneTodo() {
   ).innerText = `${undoneTodo.length} items left`;
 }
 
+function showCompletedTodos() {
+  document.querySelectorAll(".status:not(.check)").forEach((statusElement) => {
+    statusElement.parentNode.style.display = "none";
+  });
+}
+
+document
+  .querySelector(".completed")
+  .addEventListener("click", showCompletedTodos);
+
 function updateTodoList() {
   todoList.innerHTML = "";
   todos.forEach((todo, index) => {
@@ -24,7 +34,6 @@ function updateTodoList() {
     if (todo.done) {
       newTodo.querySelector(".todo-text").classList.add("line-through");
       newTodo.querySelector(".status").classList.add("check");
-
       undoneTodo();
     }
     newTodo.querySelector(".cross").addEventListener("click", function () {
@@ -40,6 +49,7 @@ function updateTodoList() {
         updateTodoList();
         li.querySelector(".todo-text").classList.toggle("line-through");
         li.querySelector(".status").classList.toggle("check");
+        showCompletedTodos();
       }
     });
     li.addEventListener("mouseover", () => {
