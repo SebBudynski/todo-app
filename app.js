@@ -31,6 +31,12 @@ function updateTodoList() {
         li.querySelector(".status").classList.toggle("check");
       }
     });
+    li.addEventListener("mouseover", () => {
+      li.querySelector(".cross").style.visibility = "visible";
+    });
+    li.addEventListener("mouseout", () => {
+      li.querySelector(".cross").style.visibility = "hidden";
+    });
     todoList.appendChild(newTodo);
   });
 }
@@ -64,3 +70,5 @@ window.onload = () => {
     brightMode();
   }
 };
+
+

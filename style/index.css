@@ -119,7 +119,8 @@ li {
   color: var(--dark-grayish-blue-light-theme); }
 
 .cross {
-  margin-left: auto; }
+  margin-left: auto;
+  visibility: hidden; }
 
 .bottom-bar {
   height: 2rem;
