@@ -7,6 +7,14 @@ const todoForm = document.querySelector("#todo-form");
 const switchBtn = document.querySelector(".switch-mode");
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
+// Updating undone todos counter
+function undoneTodo() {
+  const undoneTodo = document.querySelectorAll(".status:not(.check)");
+  document.querySelector(
+    ".items-left"
+  ).innerText = `${undoneTodo.length} items left`;
+}
+
 function updateTodoList() {
   todoList.innerHTML = "";
   todos.forEach((todo, index) => {
@@ -16,11 +24,14 @@ function updateTodoList() {
     if (todo.done) {
       newTodo.querySelector(".todo-text").classList.add("line-through");
       newTodo.querySelector(".status").classList.add("check");
+
+      undoneTodo();
     }
     newTodo.querySelector(".cross").addEventListener("click", function () {
       todos.splice(index, 1);
       localStorage.setItem("todos", JSON.stringify(todos));
       li.remove();
+      undoneTodo();
     });
     li.addEventListener("click", () => {
       if (typeof todo === "object" && todo !== null) {
@@ -39,9 +50,11 @@ function updateTodoList() {
     });
     todoList.appendChild(newTodo);
   });
+  undoneTodo();
 }
 
 updateTodoList();
+undoneTodo();
 
 todoForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -70,5 +83,3 @@ window.onload = () => {
     brightMode();
   }
 };
-
-

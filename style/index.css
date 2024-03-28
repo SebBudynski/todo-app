@@ -101,7 +101,8 @@ li {
   padding: 1rem;
   cursor: pointer; }
 
-.status {
+.status,
+.round {
   width: 23px;
   height: 23px;
   border-radius: 50%;
@@ -109,7 +110,7 @@ li {
   margin-left: 0.5rem; }
 
 .status:hover {
-  border: solid 1px var(--dark-grayish-blue); }
+  border: solid 1px var(--light-grayish-blue-hover); }
 
 .check {
   background: url(/images/icon-check.svg) no-repeat center, linear-gradient(to right bottom, lightsteelblue, steelblue); }
@@ -127,7 +128,8 @@ li {
   font-size: 0.75rem;
   text-align: center;
   display: flex;
-  text-wrap: nowrap; }
+  text-wrap: nowrap;
+  color: var(--dark-grayish-blue-light-theme); }
 
 .switch-mode.bright-mode {
   background: url(/images/icon-moon.svg) no-repeat center; }

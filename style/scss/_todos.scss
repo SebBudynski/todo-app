@@ -26,7 +26,8 @@ li {
   cursor: pointer;
 }
 
-.status {
+.status,
+.round {
   width: 23px;
   height: 23px;
   border-radius: 50%;
@@ -35,7 +36,7 @@ li {
 }
 
 .status:hover {
-  border: solid 1px var(--dark-grayish-blue);
+  border: solid 1px var(--light-grayish-blue-hover);
 }
 
 .check {
@@ -59,4 +60,5 @@ li {
   text-align: center;
   display: flex;
   text-wrap: nowrap;
+  color: var(--dark-grayish-blue-light-theme);
 }
