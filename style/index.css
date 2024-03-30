@@ -152,12 +152,14 @@ body.bright-mode {
   background-color: var(--very-light-gray); }
 
 p {
+  text-align: center;
   margin-top: 3rem;
   width: 25rem;
   font-size: 0.75rem;
   color: var(--dark-grayish-blue-light-theme); }
 
 .attribution {
+  margin-top: 2rem;
   font-size: 11px;
   text-align: center; }
 

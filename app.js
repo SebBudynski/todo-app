@@ -5,7 +5,11 @@ const todoList = document.querySelector(".todo-list");
 const template = document.querySelector("#todo-template");
 const todoForm = document.querySelector("#todo-form");
 const switchBtn = document.querySelector(".switch-mode");
-let todos = JSON.parse(localStorage.getItem("todos")) || [];
+let todos = JSON.parse(localStorage.getItem("todos")) || [
+  { text: "Example task 1", done: false },
+  { text: "Example task 2", done: true },
+  { text: "Example task 3", done: false },
+];
 
 // Updating undone todos counter
 function undoneTodo() {
@@ -89,11 +93,6 @@ function updateTodoList() {
       li.querySelector(".cross").style.visibility = "hidden";
     });
     todoList.appendChild(newTodo);
-    let todos = JSON.parse(localStorage.getItem("todos")) || [
-      { text: "Przykładowe zadanie 1", done: false },
-      { text: "Przykładowe zadanie 2", done: true },
-      { text: "Przykładowe zadanie 3", done: false },
-    ];
   });
   undoneTodo();
 }
