@@ -5,11 +5,14 @@ const todoList = document.querySelector(".todo-list");
 const template = document.querySelector("#todo-template");
 const todoForm = document.querySelector("#todo-form");
 const switchBtn = document.querySelector(".switch-mode");
-let todos = JSON.parse(localStorage.getItem("todos")) || [
-  { text: "Example task 1", done: false },
-  { text: "Example task 2", done: true },
-  { text: "Example task 3", done: false },
-];
+let todos = JSON.parse(localStorage.getItem("todos"));
+if (!todos || todos.length === 0) {
+  todos = [
+    { text: "Example task 1", done: false },
+    { text: "Example task 2", done: true },
+    { text: "Example task 3", done: false },
+  ];
+}
 
 // Updating undone todos counter
 function undoneTodo() {
