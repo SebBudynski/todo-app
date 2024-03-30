@@ -89,6 +89,11 @@ function updateTodoList() {
       li.querySelector(".cross").style.visibility = "hidden";
     });
     todoList.appendChild(newTodo);
+    let todos = JSON.parse(localStorage.getItem("todos")) || [
+      { text: "Przykładowe zadanie 1", done: false },
+      { text: "Przykładowe zadanie 2", done: true },
+      { text: "Przykładowe zadanie 3", done: false },
+    ];
   });
   undoneTodo();
 }

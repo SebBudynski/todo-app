@@ -59,6 +59,14 @@ li {
   font-size: 0.75rem;
   text-align: center;
   display: flex;
+  justify-content: space-between;
   text-wrap: nowrap;
   color: var(--dark-grayish-blue-light-theme);
+  li {
+    border-bottom: none;
+  }
+}
+
+.filters {
+  display: flex;
 }

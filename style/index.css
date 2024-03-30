@@ -128,8 +128,14 @@ li {
   font-size: 0.75rem;
   text-align: center;
   display: flex;
+  justify-content: space-between;
   text-wrap: nowrap;
   color: var(--dark-grayish-blue-light-theme); }
+  .bottom-bar li {
+    border-bottom: none; }
+
+.filters {
+  display: flex; }
 
 .switch-mode.bright-mode {
   background: url(/images/icon-moon.svg) no-repeat center; }
