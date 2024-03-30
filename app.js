@@ -19,11 +19,42 @@ function showCompletedTodos() {
   document.querySelectorAll(".status:not(.check)").forEach((statusElement) => {
     statusElement.parentNode.style.display = "none";
   });
+  document.querySelectorAll(".status.check").forEach((Element) => {
+    Element.parentNode.style.display = "flex";
+  });
+}
+
+function showActiveTodos() {
+  document.querySelectorAll(".status:not(.check)").forEach((statusElement) => {
+    statusElement.parentNode.style.display = "flex";
+  });
+  document.querySelectorAll(".status.check").forEach((activeElement) => {
+    activeElement.parentNode.style.display = "none";
+  });
+}
+
+function showAllTodos() {
+  document.querySelectorAll(".status").forEach((active) => {
+    active.parentNode.style.display = "flex";
+  });
+}
+
+function clearCompleted() {
+  document.querySelectorAll(".status.check").forEach((completed) => {
+    completed.parentNode.remove();
+    todos = todos.filter((todo) => !todo.done);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  });
 }
 
 document
   .querySelector(".completed")
   .addEventListener("click", showCompletedTodos);
+document.querySelector(".active").addEventListener("click", showActiveTodos);
+document.querySelector(".all").addEventListener("click", showAllTodos);
+document
+  .querySelector(".clear-completed")
+  .addEventListener("click", clearCompleted);
 
 function updateTodoList() {
   todoList.innerHTML = "";
@@ -49,7 +80,6 @@ function updateTodoList() {
         updateTodoList();
         li.querySelector(".todo-text").classList.toggle("line-through");
         li.querySelector(".status").classList.toggle("check");
-        showCompletedTodos();
       }
     });
     li.addEventListener("mouseover", () => {
