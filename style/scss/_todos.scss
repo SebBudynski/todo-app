@@ -12,7 +12,6 @@
 }
 
 .todo-container {
-  width: 30rem;
   background-color: var(--very-very-dark-grayish-blue);
   border-radius: 5px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
@@ -60,7 +59,6 @@ li {
   text-align: center;
   display: flex;
   justify-content: space-between;
-  text-wrap: nowrap;
   color: var(--dark-grayish-blue-light-theme);
   li {
     border-bottom: none;
