@@ -83,6 +83,7 @@ function updateTodoList() {
       todos[draggedIndex] = todos[droppedIndex];
       todos[droppedIndex] = temp;
       updateTodoList();
+      localStorage.setItem("todos", JSON.stringify(todos));
     });
     if (todo.done) {
       newTodo.querySelector(".todo-text").classList.add("line-through");
