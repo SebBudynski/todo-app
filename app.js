@@ -69,6 +69,21 @@ function updateTodoList() {
     const newTodo = template.content.cloneNode(true);
     newTodo.querySelector("span").textContent = todo.text;
     const li = newTodo.querySelector("li");
+    li.addEventListener("dragstart", (event) => {
+      event.dataTransfer.setData("text/plain", index);
+    });
+    li.addEventListener("dragover", (event) => {
+      event.preventDefault();
+    });
+    li.addEventListener("drop", (event) => {
+      event.preventDefault();
+      const draggedIndex = event.dataTransfer.getData("text/plain");
+      const droppedIndex = index;
+      const temp = todos[draggedIndex];
+      todos[draggedIndex] = todos[droppedIndex];
+      todos[droppedIndex] = temp;
+      updateTodoList();
+    });
     if (todo.done) {
       newTodo.querySelector(".todo-text").classList.add("line-through");
       newTodo.querySelector(".status").classList.add("check");
@@ -130,3 +145,5 @@ window.onload = () => {
     brightMode();
   }
 };
+
+//Make todos draggable
