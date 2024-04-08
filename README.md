@@ -12,6 +12,8 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
+- [Future Improvements](#future-improvements)
+  - [Planned Features](#planned-features)
 - [Author](#author)
 
 ## Overview
@@ -55,6 +57,13 @@ Users should be able to:
 ### What I learned
 
 This project help me to understand DOM operations and JavaScript possibilities.
+
+## Future Improvements
+
+### Planned Features
+
+- Refactor and clean up the code for better readability and maintainability.
+- Add more interactive features for a better user experience.
 
 ### Continued development
 
