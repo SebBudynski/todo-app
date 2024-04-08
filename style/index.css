@@ -36,7 +36,7 @@ main {
   flex-direction: column; }
 
 .content {
-  max-width: 30rem;
+  width: 30rem;
   margin: 1rem; }
 
 .top-bar {
@@ -89,7 +89,10 @@ h1 {
   margin-left: 1rem; }
 
 .todo-text {
-  margin-top: 0.25rem; }
+  margin-top: 0.25rem;
+  overflow-x: auto;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word; }
 
 .todo-container {
   background-color: var(--very-very-dark-grayish-blue);
@@ -123,7 +126,8 @@ li {
 
 .cross {
   margin-left: auto;
-  visibility: hidden; }
+  visibility: hidden;
+  margin-left: 0.5rem; }
 
 .bottom-bar {
   height: 2rem;

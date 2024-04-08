@@ -9,6 +9,9 @@
 
 .todo-text {
   margin-top: 0.25rem;
+  overflow-x: auto;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
 }
 
 .todo-container {
@@ -51,6 +54,7 @@ li {
 .cross {
   margin-left: auto;
   visibility: hidden;
+  margin-left: 0.5rem;
 }
 
 .bottom-bar {
