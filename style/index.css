@@ -187,4 +187,6 @@ p {
     font-size: 1.25rem;
     border-radius: 5px; }
   p {
-    margin-top: 6rem; } }
+    margin-top: 6rem; }
+  .cross {
+    visibility: visible; } }
