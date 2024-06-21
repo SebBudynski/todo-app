@@ -6,6 +6,7 @@ const template = document.querySelector("#todo-template");
 const todoForm = document.querySelector("#todo-form");
 const switchBtn = document.querySelector(".switch-mode");
 let todos = JSON.parse(localStorage.getItem("todos"));
+
 if (!todos || todos.length === 0) {
   todos = [
     { text: "Example task 1", done: false },
@@ -23,20 +24,22 @@ function undoneTodo() {
 }
 
 function showCompletedTodos() {
-  document.querySelectorAll(".status:not(.check)").forEach((statusElement) => {
-    statusElement.parentNode.style.display = "none";
-  });
-  document.querySelectorAll(".status.check").forEach((Element) => {
-    Element.parentNode.style.display = "flex";
+  document.querySelectorAll(".status").forEach((element) => {
+    if (!element.classList.contains("check")) {
+      element.parentNode.style.display = "none";
+    } else {
+      element.parentNode.style.display = "flex";
+    }
   });
 }
 
 function showActiveTodos() {
-  document.querySelectorAll(".status:not(.check)").forEach((statusElement) => {
-    statusElement.parentNode.style.display = "flex";
-  });
-  document.querySelectorAll(".status.check").forEach((activeElement) => {
-    activeElement.parentNode.style.display = "none";
+  document.querySelectorAll(".status").forEach((element) => {
+    if (element.classList.contains("check")) {
+      element.parentNode.style.display = "none";
+    } else {
+      element.parentNode.style.display = "flex";
+    }
   });
 }
 
@@ -146,4 +149,3 @@ window.onload = () => {
     brightMode();
   }
 };
-
