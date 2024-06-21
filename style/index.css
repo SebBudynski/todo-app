@@ -73,10 +73,6 @@ h1 {
   font-size: 1rem;
   font-family: josefin sans, sans-serif; }
 
-.item-description::-moz-placeholder {
-  font-size: 1rem;
-  color: var(--light-grayish-blue); }
-
 .item-description::placeholder {
   font-size: 1rem;
   color: var(--light-grayish-blue); }
@@ -139,9 +135,8 @@ li {
   display: flex;
   justify-content: space-between;
   color: var(--dark-grayish-blue-light-theme); }
-
-.bottom-bar li {
-  border-bottom: none; }
+  .bottom-bar li {
+    border-bottom: none; }
 
 .filters {
   display: flex; }
@@ -194,5 +189,3 @@ p {
     margin-top: 6rem; }
   .cross {
     visibility: visible; } }
-
-/*# sourceMappingURL=index.css.map */
