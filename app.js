@@ -23,29 +23,13 @@ function undoneTodo() {
   ).innerText = `${undoneTodo.length} items left`;
 }
 
-function showCompletedTodos() {
+function filterTodos(filterType) {
   document.querySelectorAll(".status").forEach((element) => {
-    if (!element.classList.contains("check")) {
-      element.parentNode.style.display = "none";
-    } else {
-      element.parentNode.style.display = "flex";
-    }
-  });
-}
-
-function showActiveTodos() {
-  document.querySelectorAll(".status").forEach((element) => {
-    if (element.classList.contains("check")) {
-      element.parentNode.style.display = "none";
-    } else {
-      element.parentNode.style.display = "flex";
-    }
-  });
-}
-
-function showAllTodos() {
-  document.querySelectorAll(".status").forEach((active) => {
-    active.parentNode.style.display = "flex";
+    const shouldDisplay =
+      filterType === "all" ||
+      (filterType === "active" && !element.classList.contains("check")) ||
+      (filterType === "completed" && element.classList.contains("check"));
+    element.parentNode.style.display = shouldDisplay ? "flex" : "none";
   });
 }
 
@@ -59,9 +43,13 @@ function clearCompleted() {
 
 document
   .querySelector(".completed")
-  .addEventListener("click", showCompletedTodos);
-document.querySelector(".active").addEventListener("click", showActiveTodos);
-document.querySelector(".all").addEventListener("click", showAllTodos);
+  .addEventListener("click", () => filterTodos("completed"));
+document
+  .querySelector(".active")
+  .addEventListener("click", () => filterTodos("active"));
+document
+  .querySelector(".all")
+  .addEventListener("click", () => filterTodos("all"));
 document
   .querySelector(".clear-completed")
   .addEventListener("click", clearCompleted);
