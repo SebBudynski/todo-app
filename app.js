@@ -1,139 +1,217 @@
 "use strict";
 
-const input = document.querySelector("#todo-input");
-const todoList = document.querySelector(".todo-list");
-const template = document.querySelector("#todo-template");
-const todoForm = document.querySelector("#todo-form");
-const switchBtn = document.querySelector(".switch-mode");
-let todos = JSON.parse(localStorage.getItem("todos"));
+// Configuration
+const config = {
+  selectors: {
+    input: "#todo-input",
+    todoList: ".todo-list",
+    template: "#todo-template",
+    todoForm: "#todo-form",
+    switchBtn: ".switch-mode",
+    itemsLeft: ".items-left",
+    bottomBar: ".bottom-bar",
+    item: ".item",
+  },
+  classes: {
+    check: "check",
+    lineThrough: "line-through",
+    brightMode: "bright-mode",
+  },
+};
 
-if (!todos || todos.length === 0) {
-  todos = [
-    { text: "Example task 1", done: false },
-    { text: "Example task 2", done: true },
-    { text: "Example task 3", done: false },
-  ];
-}
+// DOM elements initialization
+const elements = Object.fromEntries(
+  Object.entries(config.selectors).map(([key, selector]) => [
+    key,
+    document.querySelector(selector),
+  ])
+);
 
-// Updating undone todos counter
-function undoneTodo() {
-  const undoneTodo = document.querySelectorAll(".status:not(.check)");
-  document.querySelector(
-    ".items-left"
-  ).innerText = `${undoneTodo.length} items left`;
-}
+// Todos initialization
+let todos = (() => {
+  try {
+    const storedTodos = JSON.parse(localStorage.getItem("todos"));
+    return storedTodos && storedTodos.length > 0
+      ? storedTodos
+      : [
+          { text: "Example task 1", done: false },
+          { text: "Example task 2", done: true },
+          { text: "Example task 3", done: false },
+        ];
+  } catch (error) {
+    console.error("Error parsing todos from localStorage:", error);
+    return [];
+  }
+})();
 
-function filterTodos(filterType) {
-  document.querySelectorAll(".status").forEach((element) => {
-    const shouldDisplay =
-      filterType === "all" ||
-      (filterType === "active" && !element.classList.contains("check")) ||
-      (filterType === "completed" && element.classList.contains("check"));
-    element.parentNode.style.display = shouldDisplay ? "flex" : "none";
-  });
-}
+// Todo-related functions
+const todoFunctions = {
+  updateCounter: () => {
+    const undoneTodo = document.querySelectorAll(
+      `.status:not(.${config.classes.check})`
+    );
+    elements.itemsLeft.innerText = `${undoneTodo.length} items left`;
+  },
 
-function clearCompleted() {
-  document.querySelectorAll(".status.check").forEach((completed) => {
-    completed.parentNode.remove();
-    todos = todos.filter((todo) => !todo.done);
-    localStorage.setItem("todos", JSON.stringify(todos));
-  });
-}
-
-document
-  .querySelector(".completed")
-  .addEventListener("click", () => filterTodos("completed"));
-document
-  .querySelector(".active")
-  .addEventListener("click", () => filterTodos("active"));
-document
-  .querySelector(".all")
-  .addEventListener("click", () => filterTodos("all"));
-document
-  .querySelector(".clear-completed")
-  .addEventListener("click", clearCompleted);
-
-function updateTodoList() {
-  todoList.innerHTML = "";
-  todos.forEach((todo, index) => {
-    const newTodo = template.content.cloneNode(true);
-    newTodo.querySelector("span").textContent = todo.text;
+  createElement: (todo, index) => {
+    const newTodo = elements.template.content.cloneNode(true);
     const li = newTodo.querySelector("li");
-    li.addEventListener("dragstart", (event) => {
-      event.dataTransfer.setData("text/plain", index);
-    });
-    li.addEventListener("dragover", (event) => {
-      event.preventDefault();
-    });
-    li.addEventListener("drop", (event) => {
-      event.preventDefault();
-      const draggedIndex = event.dataTransfer.getData("text/plain");
-      const droppedIndex = index;
-      const temp = todos[draggedIndex];
-      todos[draggedIndex] = todos[droppedIndex];
-      todos[droppedIndex] = temp;
-      updateTodoList();
-      localStorage.setItem("todos", JSON.stringify(todos));
-    });
+    li.querySelector("span").textContent = todo.text;
+
+    todoFunctions.setupDragAndDrop(li, index);
+    todoFunctions.setupStatus(li, todo);
+    todoFunctions.setupDeleteButton(li, index);
+    todoFunctions.setupToggleCompletion(li, todo);
+    todoFunctions.setupHoverEffect(li);
+
+    return li;
+  },
+
+  setupDragAndDrop: (li, index) => {
+    li.addEventListener("dragstart", (event) =>
+      event.dataTransfer.setData("text/plain", index)
+    );
+    li.addEventListener("dragover", (event) => event.preventDefault());
+    li.addEventListener("drop", todoFunctions.handleDrop);
+  },
+
+  handleDrop: (event) => {
+    event.preventDefault();
+    const draggedIndex = parseInt(event.dataTransfer.getData("text/plain"));
+    const droppedIndex = Array.from(elements.todoList.children).indexOf(
+      event.target.closest("li")
+    );
+    [todos[draggedIndex], todos[droppedIndex]] = [
+      todos[droppedIndex],
+      todos[draggedIndex],
+    ];
+    todoFunctions.updateList();
+    todoFunctions.save();
+  },
+
+  setupStatus: (li, todo) => {
     if (todo.done) {
-      newTodo.querySelector(".todo-text").classList.add("line-through");
-      newTodo.querySelector(".status").classList.add("check");
-      undoneTodo();
+      li.querySelector(".todo-text").classList.add(config.classes.lineThrough);
+      li.querySelector(".status").classList.add(config.classes.check);
     }
-    newTodo.querySelector(".cross").addEventListener("click", function () {
+  },
+
+  setupDeleteButton: (li, index) => {
+    li.querySelector(".cross").addEventListener("click", () => {
       todos.splice(index, 1);
-      localStorage.setItem("todos", JSON.stringify(todos));
+      todoFunctions.save();
       li.remove();
-      undoneTodo();
+      todoFunctions.updateCounter();
     });
+  },
+
+  setupToggleCompletion: (li, todo) => {
     li.addEventListener("click", () => {
       if (typeof todo === "object" && todo !== null) {
         todo.done = !todo.done;
-        localStorage.setItem("todos", JSON.stringify(todos));
-        updateTodoList();
-        li.querySelector(".todo-text").classList.toggle("line-through");
-        li.querySelector(".status").classList.toggle("check");
+        todoFunctions.save();
+        todoFunctions.updateList();
       }
     });
-    li.addEventListener("mouseover", () => {
-      li.querySelector(".cross").style.visibility = "visible";
-    });
-    li.addEventListener("mouseout", () => {
-      li.querySelector(".cross").style.visibility = "hidden";
-    });
-    todoList.appendChild(newTodo);
-  });
-  undoneTodo();
-}
+  },
 
-updateTodoList();
-undoneTodo();
+  setupHoverEffect: (li) => {
+    const cross = li.querySelector(".cross");
+    li.addEventListener(
+      "mouseover",
+      () => (cross.style.visibility = "visible")
+    );
+    li.addEventListener("mouseout", () => (cross.style.visibility = "hidden"));
+  },
 
-todoForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  if (input.value.trim() !== "") {
-    todos.push({ text: input.value, done: false });
-    localStorage.setItem("todos", JSON.stringify(todos));
-    updateTodoList();
-    input.value = "";
-  }
+  save: () => {
+    try {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    } catch (error) {
+      console.error("Error saving todos to localStorage:", error);
+    }
+  },
+
+  updateList: () => {
+    elements.todoList.innerHTML = "";
+    todos.forEach((todo, index) => {
+      const todoElement = todoFunctions.createElement(todo, index);
+      elements.todoList.appendChild(todoElement);
+    });
+    todoFunctions.updateCounter();
+  },
+
+  add: (event) => {
+    event.preventDefault();
+    if (elements.input.value.trim() !== "") {
+      todos.push({ text: elements.input.value, done: false });
+      todoFunctions.save();
+      todoFunctions.updateList();
+      elements.input.value = "";
+    }
+  },
+
+  filter: (filterType) => {
+    document.querySelectorAll(".status").forEach((element) => {
+      const shouldDisplay =
+        filterType === "all" ||
+        (filterType === "active" &&
+          !element.classList.contains(config.classes.check)) ||
+        (filterType === "completed" &&
+          element.classList.contains(config.classes.check));
+      element.parentNode.style.display = shouldDisplay ? "flex" : "none";
+    });
+  },
+
+  clearCompleted: () => {
+    document
+      .querySelectorAll(`.status.${config.classes.check}`)
+      .forEach((completed) => {
+        completed.parentNode.remove();
+      });
+    todos = todos.filter((todo) => !todo.done);
+    todoFunctions.save();
+    todoFunctions.updateList();
+  },
+};
+
+// Bright mode related functions
+const brightModeFunctions = {
+  toggle: () => {
+    [
+      elements.switchBtn,
+      document.body,
+      elements.todoList,
+      elements.item,
+      elements.bottomBar,
+    ].forEach((el) => el.classList.toggle(config.classes.brightMode));
+    localStorage.setItem(
+      "bright-mode",
+      document.body.classList.contains(config.classes.brightMode)
+    );
+  },
+
+  init: () => {
+    if (localStorage.getItem("bright-mode") === "true") {
+      brightModeFunctions.toggle();
+    }
+  },
+};
+
+// Event listeners
+elements.todoForm.addEventListener("submit", todoFunctions.add);
+elements.switchBtn.addEventListener("click", brightModeFunctions.toggle);
+
+// Event delegation for filter and clear buttons
+document.querySelector(".bottom-bar").addEventListener("click", (event) => {
+  if (event.target.classList.contains("completed"))
+    todoFunctions.filter("completed");
+  if (event.target.classList.contains("active")) todoFunctions.filter("active");
+  if (event.target.classList.contains("all")) todoFunctions.filter("all");
+  if (event.target.classList.contains("clear-completed"))
+    todoFunctions.clearCompleted();
 });
 
-function brightMode() {
-  switchBtn.classList.toggle("bright-mode");
-  document.querySelector("body").classList.toggle("bright-mode");
-  document.querySelector(".todo-list").classList.toggle("bright-mode");
-  document.querySelector(".item").classList.toggle("bright-mode");
-  document.querySelector(".bottom-bar").classList.toggle("bright-mode");
-  let isBrightMode = document.body.classList.contains("bright-mode");
-  localStorage.setItem("bright-mode", isBrightMode);
-}
-
-switchBtn.addEventListener("click", brightMode);
-
-window.onload = () => {
-  if (localStorage.getItem("bright-mode") === "true") {
-    brightMode();
-  }
-};
+// Initialization
+todoFunctions.updateList();
+brightModeFunctions.init();
