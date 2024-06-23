@@ -143,12 +143,10 @@ const todoFunctions = {
 
   add: (event) => {
     event.preventDefault();
-    if (elements.input.value.trim() !== "") {
       todos.push({ text: elements.input.value, done: false });
       todoFunctions.save();
       todoFunctions.updateList();
       elements.input.value = "";
-    }
   },
 
   filter: (filterType) => {
