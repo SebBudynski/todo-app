@@ -1,7 +1,6 @@
 .item-description,
 .todo-text {
   background-color: inherit;
-  color: inherit;
   width: 100%;
   border: none;
   margin-left: 1rem;
@@ -56,7 +55,8 @@ li {
   margin-left: 0.5rem;
 }
 
-.bottom-bar {
+.bottom-bar,
+nav {
   height: 2rem;
   font-size: 0.75rem;
   text-align: center;
@@ -66,6 +66,15 @@ li {
   li {
     border-bottom: none;
   }
+}
+
+.clear-completed {
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  color: var(--dark-grayish-blue-light-theme);
+  font: inherit;
+  margin-right: 0.5rem;
 }
 
 .filters {

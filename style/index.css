@@ -83,7 +83,6 @@ h1 {
 .item-description,
 .todo-text {
   background-color: inherit;
-  color: inherit;
   width: 100%;
   border: none;
   margin-left: 1rem; }
@@ -128,15 +127,25 @@ li {
   visibility: hidden;
   margin-left: 0.5rem; }
 
-.bottom-bar {
+.bottom-bar,
+nav {
   height: 2rem;
   font-size: 0.75rem;
   text-align: center;
   display: flex;
   justify-content: space-between;
   color: var(--dark-grayish-blue-light-theme); }
-  .bottom-bar li {
+  .bottom-bar li,
+  nav li {
     border-bottom: none; }
+
+.clear-completed {
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  color: var(--dark-grayish-blue-light-theme);
+  font: inherit;
+  margin-right: 0.5rem; }
 
 .filters {
   display: flex; }
@@ -148,12 +157,10 @@ body.bright-mode {
   background: url(/images/bg-desktop-light.jpg) top no-repeat var(--very-light-gray); }
 
 .todo-list.bright-mode,
-.item.bright-mode {
+.item.bright-mode,
+.bottom-bar.bright-mode {
   background-color: var(--very-light-gray);
   color: var(--dark-grayish-blue); }
-
-.bottom-bar.bright-mode {
-  background-color: var(--very-light-gray); }
 
 p {
   text-align: center;

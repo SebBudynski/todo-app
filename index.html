@@ -18,13 +18,21 @@
   </head>
 
   <body>
+    <noscript>
+      <p>This application requires JavaScript to be enabled.</p>
+    </noscript>
     <main>
       <div class="content">
         <header class="top-bar">
           <h1>TODO</h1>
-          <button class="switch-mode" aria-label="Switch theme"></button>
+          <button
+            class="switch-mode"
+            aria-label="Switch theme"
+            title="Switch theme between bright and dark mode"
+          ></button>
         </header>
         <form id="todo-form">
+          <label for="todo-input" class="visually-hidden"></label>
           <div class="item">
             <div class="round"></div>
             <input
@@ -38,17 +46,17 @@
           </div>
         </form>
         <div class="todo-container">
-          <ul class="todo-list"></ul>
+          <ul class="todo-list" aria-live="polite"></ul>
           <ul class="bottom-bar">
             <li class="items-left">0 items left</li>
-            <li>
+            <nav>
               <ul class="filters">
                 <li class="all">All</li>
                 <li class="active">Active</li>
                 <li class="completed">Completed</li>
               </ul>
-            </li>
-            <li class="clear-completed">Clear Completed</li>
+            </nav>
+            <button class="clear-completed">Clear Completed</button>
           </ul>
         </div>
         <p>Drag and drop to reorder list</p>
@@ -60,7 +68,7 @@
           <span class="todo-text"></span>
           <img
             src="images/icon-cross.svg"
-            alt="icon of a cross to dalete todo"
+            alt="icon of a cross to delete todo"
             class="cross"
           />
         </li>

@@ -8,12 +8,8 @@ body.bright-mode {
 }
 
 .todo-list.bright-mode,
-.item.bright-mode {
+.item.bright-mode,
+.bottom-bar.bright-mode {
   background-color: var(--very-light-gray);
   color: var(--dark-grayish-blue);
 }
-
-.bottom-bar.bright-mode {
-  background-color: var(--very-light-gray);
-}
-

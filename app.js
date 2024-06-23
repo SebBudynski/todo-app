@@ -44,6 +44,15 @@ let todos = (() => {
   }
 })();
 
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 // Todo-related functions
 const todoFunctions = {
   updateCounter: () => {
@@ -143,10 +152,14 @@ const todoFunctions = {
 
   add: (event) => {
     event.preventDefault();
-      todos.push({ text: elements.input.value, done: false });
+    const trimmedValue = elements.input.value.trim();
+    if (trimmedValue) {
+      const safeValue = escapeHtml(trimmedValue);
+      todos.push({ text: safeValue, done: false });
       todoFunctions.save();
       todoFunctions.updateList();
       elements.input.value = "";
+    }
   },
 
   filter: (filterType) => {
